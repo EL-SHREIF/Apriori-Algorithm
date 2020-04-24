@@ -1,0 +1,27 @@
+
+Data = uniqueData  //Data -> table containing all values possible with 0,1 assigned to the cells indicating its presence 
+
+func get_support(Data, minimumSupport) {
+    
+    totalAcceptedPairs = [] //All the pairs possible that has a value over the minimum support
+
+    do{
+
+        for(loop on each column){
+            supportList += getsupport(column) // List with each attribute and its support value
+        }
+            
+        acceptedValues = acceptedValue(supportList, minimumSupport) // Filter all the supports to the attributes that passes the minimum support only
+
+        possibleCombinations = Combinations(acceptedValues) // Make combinations from acceptedValues
+        // n.b:(1) we don't make the combinations from totalAcceptedPairs
+        //     (2) make sure when combining this two pairs fro ex. {(I1,I2),(I1,I3)} the resultant (I1,I2,I3),, I1 is written once(unique concatenation)
+
+        Data = makeDataTable(possibleCombinations, Data) // Make a table of data as described above with the columns of the new combinations only
+        
+        totalAcceptedPairs += acceptedValues //Add the accepted values to the total, we will be using the total in the confidence calculations, etc.
+
+    } while(acceptedValues not empty); // when no more accepted values is calculated terminate
+}
+
+    

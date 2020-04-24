@@ -21,5 +21,5 @@ get_unique_values <- function(data) {
     }
     
     write.table(data_matrix,"data/unique_data.txt",append = FALSE, sep="\t", dec = ".", row.names = FALSE, col.names = TRUE)
-    return (unique_data)
+    return (data_matrix)
 }
