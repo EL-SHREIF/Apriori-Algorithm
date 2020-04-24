@@ -5,22 +5,20 @@ source("functions/get_accepted_values.r")
 source("functions/support.r")
 source("functions/get_combinations.r")
 
-minimumSupport = 0.5
+minimumSupport = 0.3
 
+#load data
 data <- load_data()
 unique_matrix <- get_unique_values(data)
 unique_values <- colnames(unique_matrix)
 
-#support_values <- get_support_of_matrix(unique_matrix)
-#accepted_values <- get_accepted_values(support_values, minimumSupport)
-
 Ck = unique_values
 
-while(length(Ck) != 0){
-  Lk = get_support(Ck, 2500)
+list_of_support_tables = list()
+
+while (length(Ck) != 0) {
+  supports_table = get_support(Ck, minimumSupport)
+  list_of_support_tables = append(list_of_support_tables, list(supports_table))
+  Lk = strsplit(names(supports_table), '-')
   Ck = get_combinations(Lk)
 }
-
-
-
-
