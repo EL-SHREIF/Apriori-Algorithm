@@ -1,19 +1,34 @@
-get_support_of_matrix <- function(data) {
-    #Calculating the the data size for looping
-    no_of_cols = ncol(data)
-    no_of_rows = nrow(data)
 
-    #Vector will contain the support count.
-    support_values = c()
-    
-    #Calculate the support of each column
-    for (i in 1:no_of_cols) {
-    support_values <- c(support_values, (sum(data[,i])/no_of_rows))
+get_support_of_matrix <- function(unique_matrix, Lk_1) {
+  #Vector of supports
+  supports <- c()
+
+  #Get data dimensions
+  no_of_cols = 1
+  no_of_rows = nrow(unique_matrix)
+
+  #Initialize Attribute Names
+  attributeNames = names(supports)
+
+  #Get The Supports of the combinations in L(k-1)
+  for (columns in Lk_1) {
+
+    #Declare vector of ones to and with the data columns
+    ans <- matrix(1, no_of_rows , no_of_cols)
+
+    for (c in columns) {
+      #ANDing the columns with each other to get the common occurences
+      ans = ans * unique_matrix[, c]
     }
 
-    #Map Support Values to their attributes
-    names(support_values) = colnames(data)
+    #Calculate the support for each combination
+    supports <- c(supports, (sum(ans[,])/no_of_rows))
 
-    return(support_values)
+    #Adding the attribute name to the value
+    attributeNames <- c(attributeNames, paste(columns, collapse = '-'))
+    
+  }
+  names(supports) = attributeNames
 
+  return(supports)
 }
