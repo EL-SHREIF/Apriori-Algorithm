@@ -25,7 +25,7 @@ get_support_of_matrix <- function(unique_matrix, Lk_1) {
     supports <- c(supports, (sum(ans[,])/no_of_rows))
 
     #Adding the attribute name to the value
-    attributeNames <- c(attributeNames, paste(columns, collapse = '-'))
+    attributeNames <- c(attributeNames, paste(sort(columns), collapse = '-'))
     
   }
   names(supports) = attributeNames

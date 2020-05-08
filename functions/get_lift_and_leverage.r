@@ -1,6 +1,7 @@
 get_lift_and_leverage <- function(rules, supports){
   
   lifts_leverages = matrix(ncol=2)
+  colnames(lifts_leverages) = c('lift', 'leverage')
   
   for (rule in rules){
     
@@ -19,7 +20,7 @@ get_lift_and_leverage <- function(rules, supports){
     leverage = c(first-second)
     
     lift_leverage = cbind(lift, leverage)
-    row.names(lift_leverage) = paste(c(paste(left, collapse = ', '), paste(right, collapse = ', ')), collapse = ' → ')
+    row.names(lift_leverage) = paste(c(paste(left, collapse = ', '), paste(right, collapse = ', ')), collapse = ' \u2192 ')
     
     lifts_leverages = rbind(lifts_leverages, lift_leverage)
     

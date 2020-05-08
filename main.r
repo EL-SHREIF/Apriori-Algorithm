@@ -31,12 +31,12 @@ interesting_rules = get_confidence(totalAcceptedSupports, rules, minimumConfiden
 
 #Calculate Lift and Leverage for the interesting rules
 lifts_and_leverages = get_lift_and_leverage(interesting_rules, totalAcceptedSupports)
-lifts_and_leverages = translate_row_names(lifts_and_leverages)
+#lifts_and_leverages = translate_row_names(lifts_and_leverages)
 
 #Sort rules according to lift or leverage
 rules_sorted_by_lift = sort(lifts_and_leverages[, 'lift'], decreasing = TRUE)
 rules_sorted_by_leverage = sort(lifts_and_leverages[, 'leverage'], decreasing = TRUE)
 
 # Write to text files
-write.table(rules_sorted_by_lift, "data/lift.txt")
-write.table(rules_sorted_by_leverage, "data/leverage.txt")
+write.table(rules_sorted_by_lift, "data/lift.txt", fileEncoding = "UTF-8")
+write.table(rules_sorted_by_leverage, "data/leverage.txt", fileEncoding = "UTF-8")

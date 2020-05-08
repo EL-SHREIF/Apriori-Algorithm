@@ -24,9 +24,9 @@ get_combinations <- function(Lk_1) {
   # check if the combinations are correct
   for (option in Ck){
     test = combn(option, k, simplify = FALSE)
-    if (Reduce("&", test %in% Lk_1)){
+    #if (Reduce("&", test %in% Lk_1)){
       output = append(output, list(option))
-    }
+    #}
   }
 
   return (output)
