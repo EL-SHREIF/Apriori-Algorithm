@@ -19,7 +19,7 @@ get_lift_and_leverage <- function(rules, supports){
     leverage = c(first-second)
     
     lift_leverage = cbind(lift, leverage)
-    row.names(lift_leverage) = paste(c(paste(left, collapse = ','), paste(right, collapse = ',')), collapse = '→')
+    row.names(lift_leverage) = paste(c(paste(left, collapse = ', '), paste(right, collapse = ', ')), collapse = ' → ')
     
     lifts_leverages = rbind(lifts_leverages, lift_leverage)
     

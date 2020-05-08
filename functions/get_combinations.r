@@ -1,11 +1,17 @@
 get_combinations <- function(Lk_1) {
   
-  if (length(Lk_1) == 0){
+  l = length(Lk_1)
+  
+  if (l == 0){
     return(list())
   }
   
   # get current k
   k = length(Lk_1[[1]])
+  
+  if (l < k + 1){
+    return(list())
+  }
 
   # get unique 1-itemsets
   unique_items = unique(unlist(Lk_1))
